@@ -4,93 +4,346 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ayokunle @ 50 — RSVP</title>
+
+  <!-- Luxury fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0b1220; --card:#111a2e; --muted:#9fb0d0; --text:#e9efff;
-      --accent:#ffd166; --accent2:#06d6a0; --danger:#ef476f;
-      --border:rgba(255,255,255,.10);
+      --bg:#070710;
+      --card: rgba(255,255,255,.08);
+      --muted: rgba(255,255,255,.72);
+      --text: rgba(255,255,255,.92);
+      --gold:#f5d07a;
+      --gold2:#ffd89b;
+      --danger:#ef476f;
+      --border:rgba(255,255,255,.14);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: radial-gradient(1200px 800px at 20% 10%, rgba(255,209,102,.18), transparent 55%),
-                  radial-gradient(900px 700px at 80% 0%, rgba(6,214,160,.16), transparent 55%),
-                  var(--bg);
+      margin:0;
+      font-family: Inter, system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       line-height:1.45;
+      background: var(--bg);
+      overflow-x:hidden;
     }
-    a{color:var(--accent)}
-    .wrap{max-width:1050px; margin:0 auto; padding:28px 18px 60px}
+
+    /* Bright colourful luxury watermark background */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-3;
+      background:
+        radial-gradient(900px 520px at 15% 18%, rgba(255, 80, 188,.55), transparent 60%),
+        radial-gradient(900px 520px at 82% 22%, rgba(90, 255, 220,.45), transparent 60%),
+        radial-gradient(900px 520px at 35% 86%, rgba(255, 210, 86,.45), transparent 60%),
+        radial-gradient(900px 520px at 92% 86%, rgba(125, 110, 255,.42), transparent 62%),
+        radial-gradient(1200px 900px at 50% 50%, rgba(255,255,255,.08), transparent 55%),
+        linear-gradient(180deg, rgba(9, 8, 18, .86), rgba(5, 5, 14, .94));
+      filter:saturate(1.25) contrast(1.05);
+    }
+    body::after{
+      content:"AY50 • AY50 • AY50 • AY50 • AY50 • AY50 • AY50 • AY50 • AY50 • AY50 • AY50";
+      position:fixed;
+      inset:-20% -20%;
+      z-index:-2;
+      pointer-events:none;
+      font-family: "Cinzel Decorative", serif;
+      font-weight:700;
+      font-size: clamp(22px, 3.2vw, 44px);
+      letter-spacing: .28em;
+      line-height: 2.2;
+      color: rgba(255,255,255,.05);
+      transform: rotate(-18deg);
+      white-space: pre-wrap;
+      text-transform: uppercase;
+    }
+
+    a{color:var(--gold)}
+    .wrap{max-width:1050px; margin:0 auto; padding:28px 18px 90px}
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(90deg, rgba(255,75,190,1), rgba(90,255,220,1), rgba(255,210,86,1), rgba(125,110,255,1));
+    }
+
     .hero{
-      padding:28px 18px; border:1px solid var(--border); border-radius:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      padding:24px 18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow:hidden;
     }
-    .tag{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px;
-      border:1px solid var(--border); background:rgba(255,255,255,.04); color:var(--muted); font-size:13px}
-    h1{margin:14px 0 8px; font-size:clamp(28px, 4vw, 42px); letter-spacing:-.02em}
+
+    .tag{
+      display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.22);
+      color:var(--muted);
+      font-size:13px
+    }
+
+    /* UPDATED: luxury title */
+    h1{
+      margin:14px 0 8px;
+      font-family: "Cinzel Decorative","Cinzel",serif;
+      font-size: clamp(30px, 4.2vw, 52px);
+      letter-spacing: .02em;
+      line-height:1.05;
+      text-shadow: 0 10px 40px rgba(0,0,0,.40);
+    }
+    .sparkle{
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(20px, 3vw, 34px);
+      color: rgba(245,208,122,.95);
+      margin: 10px 0 2px;
+    }
+
     .sub{color:var(--muted); margin:0 0 14px; max-width:70ch}
     .grid{display:grid; gap:16px}
-    @media(min-width:900px){ .grid-2{grid-template-columns:1.1fr .9fr} }
+    @media(min-width:900px){ .grid-2{grid-template-columns:1.08fr .92fr} }
+
     .card{
-      border:1px solid var(--border); border-radius:16px; padding:16px;
-      background:rgba(17,26,46,.72);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 12px 34px rgba(0,0,0,.30);
     }
-    .card h2{margin:0 0 10px; font-size:18px}
+    .card h2{
+      margin:0 0 10px;
+      font-family:"Cinzel",serif;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+    }
+
     .row{display:grid; gap:10px}
     @media(min-width:720px){ .row-2{grid-template-columns:1fr 1fr} }
+
     label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
     input, textarea, select{
       width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--border);
-      background:rgba(255,255,255,.04); color:var(--text);
+      background:rgba(255,255,255,.06); color:var(--text);
       outline:none;
     }
     textarea{min-height:110px; resize:vertical}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 14px; border-radius:12px; border:1px solid var(--border);
-      background: linear-gradient(90deg, rgba(255,209,102,.95), rgba(6,214,160,.92));
-      color:#07101f; font-weight:700; cursor:pointer;
+      padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(245,208,122,.95), rgba(255,216,155,.88));
+      color:#141219; font-weight:800; cursor:pointer;
       text-decoration:none;
+      box-shadow: 0 18px 45px rgba(245,208,122,.16);
+      transition: transform .15s ease;
     }
-    .btn.secondary{ background:rgba(255,255,255,.06); color:var(--text); }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn.secondary{
+      background:rgba(255,255,255,.09);
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow: 0 12px 34px rgba(0,0,0,.20);
+    }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; }
+
     .note{font-size:13px; color:var(--muted)}
     .pill{
-      display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px;
-      border:1px solid var(--border); background:rgba(255,255,255,.04); color:var(--muted);
+      display:inline-flex; gap:8px; align-items:center; padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--muted);
       font-size:13px;
     }
     .list{margin:0; padding-left:18px; color:var(--muted)}
     .hotel{
       display:grid; gap:8px; padding:12px; border-radius:14px; border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
+      background:rgba(255,255,255,.05);
     }
-    .hotel .name{font-weight:700; color:var(--text)}
+    .hotel .name{font-weight:800; color:var(--text)}
     .hotel .meta{color:var(--muted); font-size:13px}
+
     .footer{
       margin-top:18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
       color:var(--muted); font-size:13px;
     }
-    .success{border-left:4px solid var(--accent2); padding:10px 12px; border-radius:12px; background:rgba(6,214,160,.12)}
-    .warn{border-left:4px solid var(--accent); padding:10px 12px; border-radius:12px; background:rgba(255,209,102,.10)}
+    .success{border-left:4px solid #06d6a0; padding:10px 12px; border-radius:12px; background:rgba(6,214,160,.12)}
+    .warn{border-left:4px solid var(--gold); padding:10px 12px; border-radius:12px; background:rgba(255,209,102,.10)}
     .danger{border-left:4px solid var(--danger); padding:10px 12px; border-radius:12px; background:rgba(239,71,111,.12)}
     .divider{height:1px; background:var(--border); margin:12px 0}
     .muted{color:var(--muted)}
     code{color:#d8e4ff}
+
+    /* NEW: hero photo */
+    .heroPhoto{
+      width:100%;
+      height: 260px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.05) saturate(1.08);
+      box-shadow: 0 18px 45px rgba(0,0,0,.30);
+    }
+
+    /* NEW: countdown tiles */
+    .countdown{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .tile{
+      min-width: 88px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      text-align:center;
+    }
+    .tile .n{
+      font-family:"Cinzel", serif;
+      font-weight:800;
+      font-size: 22px;
+      color: rgba(255,255,255,.92);
+    }
+    .tile .t{
+      margin-top:4px;
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      letter-spacing:.12em;
+      text-transform: uppercase;
+    }
+
+    /* NEW: toast */
+    .toast{
+      position:fixed;
+      left: 50%;
+      bottom: 86px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.16);
+      padding: 12px 14px;
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      color: rgba(255,255,255,.90);
+      font-size: 13px;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index:60;
+      max-width: min(560px, 92vw);
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+
+    /* NEW: sticky buttons */
+    .stickyRSVP{
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    @media (max-width: 520px){
+      .stickyRSVP{ right: 12px; left: 12px; bottom: 12px; justify-content:space-between; }
+      .stickyRSVP .btn{ flex:1; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
+  <div class="wrap" id="top">
+
+    <!-- NEW: top bar controls -->
+    <div class="topbar">
+      <div class="badge"><span class="dot"></span><span>Luxury Party RSVP • Ayokunle @ 50</span></div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn secondary" id="confettiBtn" type="button">✨ Celebrate</button>
+        <button class="btn secondary" id="icsBtn" type="button">📅 Add to Calendar</button>
+      </div>
+    </div>
+
     <section class="hero">
       <div class="tag">🎉 <span>Ayokunle @ 50</span> • <span>07/18/2026</span> • <span>Mansfield, TX</span></div>
-      <h1>You’re invited!</h1>
+
+      <div class="sparkle">You’re Invited</div>
+
+      <!-- UPDATED TITLE TEXT -->
+      <h1>Ayokunle @ 50 — RSVP, Date & Location</h1>
+
       <p class="sub">
         Please RSVP, leave a congratulatory message, and share any details we should know (dietary needs, plus-one, etc.).
         We can’t wait to celebrate with you!
       </p>
 
       <div class="grid grid-2" style="margin-top:14px;">
+
+        <!-- RIGHT CARD (Event details + photo) -->
         <div class="card">
+          <!-- NEW: photo (save as assets/ayokunle.jpg) -->
+          <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" />
+
+          <div class="divider"></div>
+
+          <h2>Event details</h2>
+          <div class="row">
+            <div class="pill">📍 <span class="muted">Venue:</span> Olive Palm Event Centre</div>
+            <div class="pill">🗺️ <span class="muted">Address:</span> 6996 Dick Price Rd, Mansfield, TX 77063</div>
+            <div class="pill">🗓️ <span class="muted">Date:</span> Saturday, July 18, 2026</div>
+            <div class="pill">🕕 <span class="muted">Time:</span> 6:00 PM</div>
+            <div class="pill">🚗 <span class="muted">Parking:</span> On-site parking available</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- NEW: countdown -->
+          <h2>Countdown</h2>
+          <div class="countdown" id="countdown">
+            <div class="tile"><div class="n" id="d">--</div><div class="t">Days</div></div>
+            <div class="tile"><div class="n" id="h">--</div><div class="t">Hours</div></div>
+            <div class="tile"><div class="n" id="m">--</div><div class="t">Mins</div></div>
+            <div class="tile"><div class="n" id="s">--</div><div class="t">Secs</div></div>
+          </div>
+
+          <!-- REMOVED: Planned Activities section (per your request) -->
+        </div>
+
+        <!-- LEFT CARD (RSVP Form) -->
+        <div class="card" id="rsvp">
           <h2>RSVP / Leave a message</h2>
           <form id="rsvpForm">
             <div class="row row-2">
@@ -139,48 +392,34 @@
             </div>
 
             <div class="row row-2" style="align-items:center;">
-              <button class="btn" type="submit">Submit RSVP</button>
-              <button class="btn secondary" type="button" id="viewResponsesBtn">View my submissions</button>
-            </div>
+  <button class="btn" id="submitBtn" type="submit">Submit RSVP</button>
+  <button class="btn secondary" type="button" id="viewResponsesBtn">View my submissions</button>
+</div>
+
+<div class="row row-2" style="align-items:center; margin-top:10px;">
+  <button class="btn secondary" type="button" id="viewAllBtn">👥 View All RSVPs</button>
+  <button class="btn secondary" type="button" id="refreshAllBtn">🔄 Refresh</button>
+</div>
+
+<div class="divider"></div>
+
+<div id="allResponses" class="note" style="display:none;">
+  <strong>Latest RSVPs</strong>
+  <div id="allList" style="margin-top:10px; display:grid; gap:10px;"></div>
+</div>
 
             <div class="divider"></div>
             <div id="status" class="note">
-              Tip: This page saves entries in your browser while you test. To collect RSVPs from everyone, ensure <code>FORM_ENDPOINT</code> is set.
+              Tip: This page saves entries in your browser while you test. To collect RSVPs from everyone, ensure <code>UPLOAD_ENDPOINT</code> is set.
             </div>
           </form>
         </div>
 
-        <div class="card">
-          <h2>Event details</h2>
-          <div class="row">
-            <div class="pill">📍 <span class="muted">Venue:</span> Olive Palm Event Centre</div>
-            <div class="pill">🗺️ <span class="muted">Address:</span> 6996 Dick Price Rd, Mansfield, TX 76063</div>
-            <div class="pill">🗓️ <span class="muted">Date:</span> Saturday, July 18, 2026</div>
-            <div class="pill">🕕 <span class="muted">Time:</span> 6:00 PM</div>
-            <div class="pill">🚗 <span class="muted">Parking:</span> On-site parking available</div>
-          </div>
-
-          <div class="divider"></div>
-
-          <h2 style="margin-top:6px;">Planned activities</h2>
-          <ul class="list" id="activities">
-            <li>Welcome & photo ops</li>
-            <li>Opening toast</li>
-            <li>Dinner & drinks</li>
-            <li>Games + tributes</li>
-            <li>Live music / DJ + dance</li>
-            <li>Cake cutting + vote of thanks</li>
-          </ul>
-
-          <p class="note" style="margin-top:10px;">
-            Want a detailed “Schedule of Events” (with times)? Add dinner/speeches/cake start times and we’ll format it.
-          </p>
-        </div>
       </div>
     </section>
 
-    <!-- Upload Section (NEW) -->
-    <section class="card" style="margin-top:16px;">
+    <!-- Upload Section -->
+    <section class="card" id="upload" style="margin-top:16px;">
       <h2>Upload photos & short videos</h2>
       <p class="note">
         Help us celebrate! Upload a photo or a <strong>short video (30 seconds max)</strong> saying anything you wish about Ayokunle —
@@ -199,13 +438,12 @@
       <div class="divider"></div>
 
       <div class="row row-2" style="align-items:center;">
-        <!-- Replace UPLOAD_URL with your Google Form link (or Dropbox file request link) -->
-        <a class="btn" id="uploadLink" href="https://forms.gle/9oTX3ABbtHQHZQ9s9" target="_blank" rel="noreferrer">
+        <a class="btn" id="uploadLink" href="#" target="_blank" rel="noreferrer">
           Upload photos/videos
         </a>
 
         <a class="btn secondary"
-           href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Center%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063"
+           href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2077063"
            target="_blank" rel="noreferrer">
           Get directions
         </a>
@@ -217,7 +455,7 @@
     </section>
 
     <div class="grid grid-2" style="margin-top:16px;">
-      <section class="card">
+      <section class="card" id="hotels">
         <h2>Nearby hotels (accommodation)</h2>
         <p class="note">Tap “Map” to search quickly.</p>
 
@@ -244,7 +482,7 @@
       <section class="card">
         <h2>Helpful info</h2>
         <ul class="list">
-          <li><strong>Venue map:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Center%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063" target="_blank" rel="noreferrer">Open directions</a></li>
+          <li><strong>Venue map:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2077063" target="_blank" rel="noreferrer">Open directions</a></li>
           <li><strong>Start time:</strong> 6:00 PM</li>
           <li><strong>Upload tribute:</strong> Use the “Upload photos/videos” button above</li>
         </ul>
@@ -263,16 +501,49 @@
     </div>
   </div>
 
-  <script>
-    // 1) Paste your Google Apps Script Web App URL here (for RSVP submissions):
-    const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKEFsURKDvYFniEWm1NLKR6fIOUqyB-AkmEmVs3WrkEUliFewC39YCvY7FWMQ8P4Yu/exec"; // e.g. "https://script.google.com/macros/s/XXXX/exec"
+  <!-- Sticky buttons -->
+  <div class="stickyRSVP">
+    <a class="btn" href="#rsvp">✅ RSVP</a>
+    <a class="btn secondary" href="#upload">📤 Upload</a>
+  </div>
 
-    // 2) Paste your Upload link here (Google Form file-upload link or Dropbox file request):
-    const UPLOAD_URL = "https://forms.gle/9oTX3ABbtHQHZQ9s9"; // e.g. "https://forms.gle/....."
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // 3) REQUIRED: Add Google sheet endpoint (Apps Script Web App)
+    const UPLOAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKEFsURKDvYFniEWm1NLKR6fIOUqyB-AkmEmVs3WrkEUliFewC39YCvY7FWMQ8P4Yu/exec";
+
+    // 4) REQUIRED: Upload URL (Google Form)
+    const UPLOAD_URL = "https://forms.gle/9oTX3ABbtHQHZQ9s9";
+
+    // Backwards compatibility with your existing function names
+    const FORM_ENDPOINT = UPLOAD_ENDPOINT;
+
+    // Event ISO (local)
+    const EVENT_ISO = "2026-07-18T18:00:00"; // 6:00 PM
 
     // Apply upload URL to the button
     const uploadEl = document.getElementById("uploadLink");
-    if (uploadEl && UPLOAD_URL && UPLOAD_URL !== "UPLOAD_URL") uploadEl.href = UPLOAD_URL;
+    if (uploadEl) uploadEl.href = UPLOAD_URL;
+
+    // Smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // Toast helper
+    const toastEl = document.getElementById("toast");
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      setTimeout(() => toastEl.classList.remove("show"), 2600);
+    }
 
     // Local storage key (for testing / backup)
     const STORAGE_KEY = "ayokunle50_rsvp_entries_v1";
@@ -280,6 +551,7 @@
     const form = document.getElementById("rsvpForm");
     const statusEl = document.getElementById("status");
     const viewBtn = document.getElementById("viewResponsesBtn");
+    const submitBtn = document.getElementById("submitBtn");
     document.getElementById("year").textContent = new Date().getFullYear();
 
     function loadEntries(){
@@ -317,11 +589,13 @@
         diet: document.getElementById("diet").value.trim(),
         message: document.getElementById("message").value.trim(),
         submittedAt: new Date().toISOString(),
-        userAgent: navigator.userAgent
+        userAgent: navigator.userAgent,
+        page: window.location.href
       };
 
       if(!data.fullName || !data.attendance){
         setStatus("danger", "Please add your name and select attendance.");
+        toast("Missing required fields.");
         return;
       }
 
@@ -330,18 +604,28 @@
       entries.unshift(data);
       saveEntries(entries);
 
+      // UX: button loading
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
       // Send to Google Sheets endpoint
       try{
         const result = await postToEndpoint(data);
         if(result.skipped){
-          setStatus("warn", "Saved locally only. Set FORM_ENDPOINT to send RSVPs to Google Sheets.");
+          setStatus("warn", "Saved locally only. Set <code>UPLOAD_ENDPOINT</code> to send RSVPs to Google Sheets.");
+          toast("Saved locally (endpoint not set).");
         } else {
           setStatus("success", "Submitted! ✅ Thanks — your RSVP was received.");
+          toast("RSVP submitted ✅");
         }
         form.reset();
         document.getElementById("guests").value = 1;
       } catch (err){
         setStatus("warn", "Saved locally ✅ but could not send to the server. (" + err.message + ")");
+        toast("Saved locally — send failed.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit RSVP";
       }
     });
 
@@ -355,6 +639,93 @@
         `${i+1}. ${x.fullName} — ${x.attendance} — Guests: ${x.guests}\n   Msg: ${x.message || "(none)"}\n   Time: ${x.submittedAt}`
       );
       alert("Your saved submissions (this browser):\n\n" + lines.join("\n\n"));
+    });
+
+    // Countdown
+    function tick(){
+      const target = new Date(EVENT_ISO).getTime();
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff / (1000*60*60)) % 24);
+      const m = Math.floor((diff / (1000*60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("d").textContent = String(d).padStart(2,"0");
+      document.getElementById("h").textContent = String(h).padStart(2,"0");
+      document.getElementById("m").textContent = String(m).padStart(2,"0");
+      document.getElementById("s").textContent = String(s).padStart(2,"0");
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // Confetti (no library)
+    function burst(){
+      const n = 60;
+      for(let i=0;i<n;i++){
+        const p = document.createElement("div");
+        p.style.position="fixed";
+        p.style.left = (Math.random()*100)+"vw";
+        p.style.top = "-10px";
+        p.style.width = (6 + Math.random()*8)+"px";
+        p.style.height = (6 + Math.random()*14)+"px";
+        p.style.borderRadius = "3px";
+        p.style.background = `hsl(${Math.random()*360}, 90%, 60%)`;
+        p.style.zIndex = 999;
+        p.style.opacity = 0.95;
+        p.style.transform = `rotate(${Math.random()*180}deg)`;
+        document.body.appendChild(p);
+
+        const fall = 900 + Math.random()*1100;
+        const drift = (Math.random()*2 - 1) * 160;
+
+        p.animate([
+          { transform: p.style.transform, top: "-10px", left: p.style.left, opacity: 0.95 },
+          { transform: `rotate(${Math.random()*540}deg)`, top: (window.innerHeight+40)+"px", left: `calc(${p.style.left} + ${drift}px)`, opacity: 0.05 }
+        ], { duration: fall, easing: "cubic-bezier(.2,.7,.2,1)" });
+
+        setTimeout(() => p.remove(), fall + 50);
+      }
+    }
+    document.getElementById("confettiBtn").addEventListener("click", () => {
+      burst();
+      toast("Let’s celebrate! 🎉");
+    });
+
+    // Add to Calendar (.ics download)
+    document.getElementById("icsBtn").addEventListener("click", () => {
+      // Note: This uses UTC times; you can adjust if you want exact timezone conversion.
+      const start = "20260718T230000Z"; // ~6PM CT
+      const end   = "20260719T030000Z"; // +4 hours
+
+      const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ayokunle@50//RSVP//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ayokunle50-${Date.now()}@rsvp
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").split(".")[0]}Z
+DTSTART:${start}
+DTEND:${end}
+SUMMARY:Ayokunle @ 50 Celebration
+LOCATION:Olive Palm Event Centre, 6996 Dick Price Rd, Mansfield, TX 77063
+DESCRIPTION:Join us to celebrate Ayokunle @ 50! RSVP and share photos/videos.
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Ayokunle-50.ics";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast("Calendar file downloaded 📅");
     });
   </script>
 </body>
