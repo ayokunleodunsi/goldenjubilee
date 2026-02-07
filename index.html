@@ -580,22 +580,40 @@
 
     async function postToEndpoint(payload){
       if(!FORM_ENDPOINT) return {skipped:true};
-      try {
-        console.log("Attempting to POST to:", FORM_ENDPOINT, "with data:", payload);
-        const res = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          mode: "cors"
-        });
-        console.log("Response status:", res.status, "ok:", res.ok);
-        const text = await res.text();
-        console.log("Response body:", text);
-        if(!res.ok) throw new Error("Endpoint error: " + res.status + " - " + text);
-        return {ok:true};
-      } catch(err) {
-        console.error("postToEndpoint failed:", err);
-        throw err;
+      
+      const maxRetries = 3;
+      const timeout = 15000; // 15 seconds
+      
+      for(let attempt = 1; attempt <= maxRetries; attempt++){
+        try {
+          console.log(`[Attempt ${attempt}/${maxRetries}] Posting to:`, FORM_ENDPOINT);
+          console.log("Payload:", JSON.stringify(payload));
+          
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), timeout);
+          
+          const res = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+            mode: "cors",
+            signal: controller.signal
+          });
+          
+          clearTimeout(timeoutId);
+          console.log("Response status:", res.status, "ok:", res.ok);
+          
+          const text = await res.text();
+          console.log("Response body:", text);
+          
+          if(!res.ok) throw new Error("Endpoint error: " + res.status + " - " + text);
+          return {ok:true};
+        } catch(err) {
+          console.error(`[Attempt ${attempt}/${maxRetries}] Failed:`, err.message || err);
+          if(attempt === maxRetries) throw err;
+          // Wait before retry
+          await new Promise(r => setTimeout(r, 1000 * attempt));
+        }
       }
     }
 
