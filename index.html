@@ -580,13 +580,23 @@
 
     async function postToEndpoint(payload){
       if(!FORM_ENDPOINT) return {skipped:true};
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if(!res.ok) throw new Error("Endpoint error: " + res.status);
-      return {ok:true};
+      try {
+        console.log("Attempting to POST to:", FORM_ENDPOINT, "with data:", payload);
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          mode: "cors"
+        });
+        console.log("Response status:", res.status, "ok:", res.ok);
+        const text = await res.text();
+        console.log("Response body:", text);
+        if(!res.ok) throw new Error("Endpoint error: " + res.status + " - " + text);
+        return {ok:true};
+      } catch(err) {
+        console.error("postToEndpoint failed:", err);
+        throw err;
+      }
     }
 
     if(form) form.addEventListener("submit", async (e) => {
