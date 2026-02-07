@@ -227,7 +227,7 @@
     /* NEW: hero photo */
     .heroPhoto{
       width:100%;
-      height: 260px;
+      height: 520px;
       border-radius: 16px;
       border:1px solid rgba(255,255,255,.14);
       object-fit: cover;
@@ -325,21 +325,21 @@
       <div class="sparkle">You’re Invited</div>
 
       <!-- UPDATED TITLE TEXT -->
-      <h1 style="text-align:center; font-weight:900;">Ayokunle @ 50</h1>
-
-      <p class="sub">
-        Please RSVP, leave a congratulatory message, and share any details we should know (dietary needs, plus-one, etc.).
-        We can’t wait to celebrate with you!
-      </p>
-
-      <!-- Helpful info moved to top-left -->
-      <div class="card" id="helpful-info" style="max-width:380px; margin-top:12px;">
+      <!-- Helpful info (top-right) -->
+      <div class="card" id="helpful-info" style="position:absolute; top:18px; right:18px; width:320px; z-index:2;">
         <h2>Helpful info</h2>
         <ul class="list">
           <li><strong>Venue map:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063" target="_blank" rel="noopener noreferrer">Open directions</a></li>
           <li><strong>Start time:</strong> 6:00 PM</li>
         </ul>
       </div>
+
+      <h1 style="text-align:center; font-weight:900;">Ayokunle @ 50</h1>
+
+      <p class="sub">
+        Please RSVP, leave a congratulatory message, and share any details we should know (dietary needs, plus-one, etc.).
+        We can’t wait to celebrate with you!
+      </p>
 
       <div class="grid grid-2" style="margin-top:14px;">
 
@@ -428,7 +428,7 @@
         <!-- RIGHT CARD (Larger Photo + Countdown) -->
         <div class="card">
           <!-- NEW: photo (save as assets/ayokunle.jpg) -->
-          <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" width="1200" height="800" loading="lazy" decoding="async" style="height: 380px; margin-bottom: 16px;" />
+            <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" width="1600" height="1100" loading="lazy" decoding="async" style="height: 520px; margin-bottom: 16px; object-fit:cover;" />
 
           <!-- NEW: countdown -->
           <h2>Countdown</h2>
