@@ -332,6 +332,15 @@
         We can’t wait to celebrate with you!
       </p>
 
+      <!-- Helpful info moved to top-left -->
+      <div class="card" id="helpful-info" style="max-width:380px; margin-top:12px;">
+        <h2>Helpful info</h2>
+        <ul class="list">
+          <li><strong>Venue map:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063" target="_blank" rel="noopener noreferrer">Open directions</a></li>
+          <li><strong>Start time:</strong> 6:00 PM</li>
+        </ul>
+      </div>
+
       <div class="grid grid-2" style="margin-top:14px;">
 
         <!-- LEFT CARD (RSVP Form) -->
@@ -403,12 +412,6 @@
             <div class="divider"></div>
             <div id="status" class="note"></div>
           </form>
-        </div>
-
-        <!-- RIGHT CARD (Photo + Event details + Countdown) -->
-        <div class="card">
-          <!-- NEW: photo (save as assets/ayokunle.jpg) -->
-          <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" width="1200" height="800" loading="lazy" decoding="async" />
 
           <div class="divider"></div>
 
@@ -420,8 +423,12 @@
             <div class="pill">🕕 <span class="muted">Time:</span> 6:00 PM</div>
             <div class="pill">🚗 <span class="muted">Parking:</span> On-site parking available</div>
           </div>
+        </div>
 
-          <div class="divider"></div>
+        <!-- RIGHT CARD (Larger Photo + Countdown) -->
+        <div class="card">
+          <!-- NEW: photo (save as assets/ayokunle.jpg) -->
+          <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" width="1200" height="800" loading="lazy" decoding="async" style="height: 380px; margin-bottom: 16px;" />
 
           <!-- NEW: countdown -->
           <h2>Countdown</h2>
@@ -470,6 +477,7 @@
       <p class="note" style="margin-top:10px;">
         <strong>Please keep videos to 30 seconds or less</strong> so we can compile them into a tribute montage.
       </p>
+      <p class="note"><strong>Upload tribute:</strong> Use the "Upload photos/videos" button above</p>
     </section>
 
     <div class="grid grid-2" style="margin-top:16px;">
@@ -496,22 +504,7 @@
           </div>
         </div>
       </section>
-
-      <section class="card">
-        <h2>Helpful info</h2>
-        <ul class="list">
-          <li><strong>Venue map:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063" target="_blank" rel="noopener noreferrer">Open directions</a></li>
-          <li><strong>Start time:</strong> 6:00 PM</li>
-          <li><strong>Upload tribute:</strong> Use the “Upload photos/videos” button above</li>
-        </ul>
-
-        <div class="divider"></div>
-
-        <div class="footer">
-          <span>© <span id="year"></span> Ayokunle @ 50</span>
-          <span class="muted">Made with ❤️</span>
-        </div>
-      </section>
+      
     </div>
   </div>
 
