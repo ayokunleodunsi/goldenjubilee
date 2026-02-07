@@ -633,8 +633,13 @@
         form.reset();
         document.getElementById("guests").value = 1;
       } catch (err){
-        setStatus("warn", "Saved locally ✅ but could not send to the server. (" + err.message + ")");
-        toast("Saved locally — send failed.");
+        console.error("RSVP submission error:", err);
+        setStatus("warn", "Saved locally ✅. Server unreachable — opening fallback form...");
+        toast("Saved locally. Opening backup form...");
+        // Fallback: open Google Form so user can submit manually
+        setTimeout(() => {
+          window.open(UPLOAD_URL, "_blank", "noopener,noreferrer");
+        }, 1000);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "Submit RSVP";
