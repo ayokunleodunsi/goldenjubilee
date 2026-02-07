@@ -523,6 +523,9 @@
     // 4) REQUIRED: Upload URL (Google Form)
     const UPLOAD_URL = "https://forms.gle/9oTX3ABbtHQHZQ9s9";
 
+    // 4b) REQUIRED: RSVP fallback Google Form
+    const RSVP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeMp4qhL0IWMSnPXVPbm52kI2NyBwLJN0jzhvIsUUU0XywHXA/viewform";
+
     // Backwards compatibility with your existing function names
     const FORM_ENDPOINT = UPLOAD_ENDPOINT;
 
@@ -592,11 +595,11 @@
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), timeout);
           
+          // Try without strict CORS mode to avoid preflight
           const res = await fetch(FORM_ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
-            mode: "cors",
             signal: controller.signal
           });
           
@@ -664,9 +667,9 @@
         console.error("RSVP submission error:", err);
         setStatus("warn", "Saved locally ✅. Server unreachable — opening fallback form...");
         toast("Saved locally. Opening backup form...");
-        // Fallback: open Google Form so user can submit manually
+        // Fallback: open RSVP Google Form so user can submit manually
         setTimeout(() => {
-          window.open(UPLOAD_URL, "_blank", "noopener,noreferrer");
+          window.open(RSVP_FORM_URL, "_blank", "noopener,noreferrer");
         }, 1000);
       } finally {
         submitBtn.disabled = false;
