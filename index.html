@@ -103,10 +103,26 @@
       padding:24px 18px;
       border:1px solid var(--border);
       border-radius:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
+      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06)), url('assets/ayokunle.jpg') no-repeat center/cover;
+      background-attachment: fixed;
+      background-blend-mode: overlay;
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
       overflow:hidden;
+      position: relative;
+    }
+    .hero::before{
+      content:"";
+      position: absolute;
+      inset: 0;
+      background: rgba(7,7,16,.70);
+      z-index: 0;
+      border-radius: 18px;
+      pointer-events: none;
+    }
+    .hero > *{
+      position: relative;
+      z-index: 1;
     }
 
     .tag{
@@ -309,7 +325,7 @@
       <div class="sparkle">You’re Invited</div>
 
       <!-- UPDATED TITLE TEXT -->
-      <h1>Ayokunle @ 50 — RSVP, Date & Location</h1>
+      <h1 style="text-align:center; font-weight:900;">Ayokunle @ 50</h1>
 
       <p class="sub">
         Please RSVP, leave a congratulatory message, and share any details we should know (dietary needs, plus-one, etc.).
@@ -317,36 +333,6 @@
       </p>
 
       <div class="grid grid-2" style="margin-top:14px;">
-
-        <!-- RIGHT CARD (Event details + photo) -->
-        <div class="card">
-          <!-- NEW: photo (save as assets/ayokunle.jpg) -->
-          <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" width="1200" height="800" loading="lazy" decoding="async" />
-
-          <div class="divider"></div>
-
-          <h2>Event details</h2>
-          <div class="row">
-            <div class="pill">📍 <span class="muted">Venue:</span> Olive Palm Event Centre</div>
-            <div class="pill">🗺️ <span class="muted">Address:</span> 6996 Dick Price Rd, Mansfield, TX 76063</div>
-            <div class="pill">🗓️ <span class="muted">Date:</span> Saturday, July 18, 2026</div>
-            <div class="pill">🕕 <span class="muted">Time:</span> 6:00 PM</div>
-            <div class="pill">🚗 <span class="muted">Parking:</span> On-site parking available</div>
-          </div>
-
-          <div class="divider"></div>
-
-          <!-- NEW: countdown -->
-          <h2>Countdown</h2>
-          <div class="countdown" id="countdown">
-            <div class="tile"><div class="n" id="d">--</div><div class="t">Days</div></div>
-            <div class="tile"><div class="n" id="h">--</div><div class="t">Hours</div></div>
-            <div class="tile"><div class="n" id="m">--</div><div class="t">Mins</div></div>
-            <div class="tile"><div class="n" id="s">--</div><div class="t">Secs</div></div>
-          </div>
-
-          <!-- REMOVED: Planned Activities section (per your request) -->
-        </div>
 
         <!-- LEFT CARD (RSVP Form) -->
         <div class="card" id="rsvp">
@@ -415,10 +401,36 @@
 </div>
 
             <div class="divider"></div>
-            <div id="status" class="note">
-              Tip: This page saves entries in your browser while you test. To collect RSVPs from everyone, ensure <code>UPLOAD_ENDPOINT</code> is set.
-            </div>
+            <div id="status" class="note"></div>
           </form>
+        </div>
+
+        <!-- RIGHT CARD (Photo + Event details + Countdown) -->
+        <div class="card">
+          <!-- NEW: photo (save as assets/ayokunle.jpg) -->
+          <img class="heroPhoto" src="assets/ayokunle.jpg" alt="Ayokunle" width="1200" height="800" loading="lazy" decoding="async" />
+
+          <div class="divider"></div>
+
+          <h2>Event details</h2>
+          <div class="row">
+            <div class="pill">📍 <span class="muted">Venue:</span> Olive Palm Event Centre</div>
+            <div class="pill">🗺️ <span class="muted">Address:</span> 6996 Dick Price Rd, Mansfield, TX 76063</div>
+            <div class="pill">🗓️ <span class="muted">Date:</span> Saturday, July 18, 2026</div>
+            <div class="pill">🕕 <span class="muted">Time:</span> 6:00 PM</div>
+            <div class="pill">🚗 <span class="muted">Parking:</span> On-site parking available</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- NEW: countdown -->
+          <h2>Countdown</h2>
+          <div class="countdown" id="countdown">
+            <div class="tile"><div class="n" id="d">--</div><div class="t">Days</div></div>
+            <div class="tile"><div class="n" id="h">--</div><div class="t">Hours</div></div>
+            <div class="tile"><div class="n" id="m">--</div><div class="t">Mins</div></div>
+            <div class="tile"><div class="n" id="s">--</div><div class="t">Secs</div></div>
+          </div>
         </div>
 
       </div>
@@ -494,10 +506,6 @@
         </ul>
 
         <div class="divider"></div>
-
-        <h2>Host it (quick local test)</h2>
-        <pre class="note" style="white-space:pre-wrap;">python3 -m http.server 8080</pre>
-        <p class="note">Open <code>http://localhost:8080</code></p>
 
         <div class="footer">
           <span>© <span id="year"></span> Ayokunle @ 50</span>
