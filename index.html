@@ -210,6 +210,9 @@
       display:grid; gap:8px; padding:12px; border-radius:14px; border:1px solid var(--border);
       background:rgba(255,255,255,.05);
     }
+    .hotelGrid{display:grid; gap:12px}
+    @media(min-width:720px){ .hotelGrid{grid-template-columns: repeat(2, 1fr);} }
+    @media(min-width:1024px){ .hotelGrid{grid-template-columns: repeat(3, 1fr);} }
     .hotel .name{font-weight:800; color:var(--text)}
     .hotel .meta{color:var(--muted); font-size:13px}
 
@@ -343,75 +346,41 @@
 
       <div class="grid grid-2" style="margin-top:14px;">
 
-        <!-- LEFT CARD (RSVP Form) -->
-        <div class="card" id="rsvp">
-          <h2>RSVP / Leave a message</h2>
-          <form id="rsvpForm">
-            <div class="row row-2">
-              <div>
-                <label for="fullName">Full name</label>
-                <input id="fullName" name="fullName" placeholder="e.g., Jane Doe" required />
-              </div>
-              <div>
-                <label for="phone">Phone (optional)</label>
-                <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="e.g., 817-555-0123" />
-              </div>
-            </div>
+        <!-- LEFT CARD (Upload Section) -->
+        <div class="card" id="upload">
+          <h2>Upload photos & short videos</h2>
+          <p class="note">
+            Help us celebrate! Upload a photo or a <strong>short video (30 seconds max)</strong> saying anything you wish about Ayokunle —
+            a memory, prayer, advice, funny story, or heartfelt congratulations.
+          </p>
 
-            <div class="row row-2">
-              <div>
-                <label for="email">Email (optional)</label>
-                <input id="email" name="email" type="email" placeholder="e.g., jane@email.com" />
-              </div>
-              <div>
-                <label for="attendance">Will you attend?</label>
-                <select id="attendance" name="attendance" required>
-                  <option value="" selected disabled>Select one…</option>
-                  <option value="Yes">Yes, I’ll be there</option>
-                  <option value="Maybe">Maybe</option>
-                  <option value="No">No (sending my love)</option>
-                </select>
-              </div>
-            </div>
+          <div class="divider"></div>
 
-            <div class="row row-2">
-              <div>
-                <label for="guests">How many guests (including you)?</label>
-                <input id="guests" name="guests" type="number" min="1" max="10" value="1" />
-              </div>
-              <div>
-                <label for="diet">Dietary needs (optional)</label>
-                <input id="diet" name="diet" placeholder="e.g., no pork, vegetarian, allergies…" />
-              </div>
-            </div>
+          <div class="row">
+            <div class="pill">🎥 Video prompts: “Happy 50th Ayokunle!”, “My favorite memory is…”, “Wishing you many more years…”</div>
+            <div class="pill">🙏 Prayer/Blessing prompt: “May God grant you strength, joy, and long life…”</div>
+            <div class="pill">😂 Funny story prompt: “Remember when… (keep it short & sweet!)”</div>
+            <div class="pill">📸 Photo ideas: throwbacks, family moments, church/community pics, group selfies</div>
+          </div>
 
-            <div class="row">
-              <div>
-                <label for="message">Congratulatory message</label>
-                <textarea id="message" name="message" placeholder="Write a short message…"></textarea>
-              </div>
-            </div>
+          <div class="divider"></div>
 
-            <div class="row row-2" style="align-items:center;">
-  <button class="btn" id="submitBtn" type="submit">Submit RSVP</button>
-  <button class="btn secondary" type="button" id="viewResponsesBtn">View my submissions</button>
-</div>
+          <div class="row row-2" style="align-items:center;">
+            <a class="btn" id="uploadLink" href="#" target="_blank" rel="noopener noreferrer">
+              Upload photos/videos
+            </a>
 
-<div class="row row-2" style="align-items:center; margin-top:10px;">
-  <button class="btn secondary" type="button" id="viewAllBtn">👥 View All RSVPs</button>
-  <button class="btn secondary" type="button" id="refreshAllBtn">🔄 Refresh</button>
-</div>
+            <a class="btn secondary"
+               href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063"
+               target="_blank" rel="noreferrer">
+              Get directions
+            </a>
+          </div>
 
-<div class="divider"></div>
-
-<div id="allResponses" class="note" style="display:none;">
-  <strong>Latest RSVPs</strong>
-  <div id="allList" style="margin-top:10px; display:grid; gap:10px;"></div>
-</div>
-
-            <div class="divider"></div>
-            <div id="status" class="note"></div>
-          </form>
+          <p class="note" style="margin-top:10px;">
+            <strong>Please keep videos to 30 seconds or less</strong> so we can compile them into a tribute montage.
+          </p>
+          <p class="note"><strong>Upload tribute:</strong> Use the "Upload photos/videos" button above</p>
 
           <div class="divider"></div>
 
@@ -443,49 +412,12 @@
       </div>
     </section>
 
-    <!-- Upload Section -->
-    <section class="card" id="upload" style="margin-top:16px;">
-      <h2>Upload photos & short videos</h2>
-      <p class="note">
-        Help us celebrate! Upload a photo or a <strong>short video (30 seconds max)</strong> saying anything you wish about Ayokunle —
-        a memory, prayer, advice, funny story, or heartfelt congratulations.
-      </p>
-
-      <div class="divider"></div>
-
-      <div class="row">
-        <div class="pill">🎥 Video prompts: “Happy 50th Ayokunle!”, “My favorite memory is…”, “Wishing you many more years…”</div>
-        <div class="pill">🙏 Prayer/Blessing prompt: “May God grant you strength, joy, and long life…”</div>
-        <div class="pill">😂 Funny story prompt: “Remember when… (keep it short & sweet!)”</div>
-        <div class="pill">📸 Photo ideas: throwbacks, family moments, church/community pics, group selfies</div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="row row-2" style="align-items:center;">
-        <a class="btn" id="uploadLink" href="#" target="_blank" rel="noopener noreferrer">
-          Upload photos/videos
-        </a>
-
-        <a class="btn secondary"
-           href="https://www.google.com/maps/search/?api=1&query=Olive%20Palm%20Event%20Centre%206996%20Dick%20Price%20Rd%20Mansfield%20TX%2076063"
-           target="_blank" rel="noreferrer">
-          Get directions
-        </a>
-      </div>
-
-      <p class="note" style="margin-top:10px;">
-        <strong>Please keep videos to 30 seconds or less</strong> so we can compile them into a tribute montage.
-      </p>
-      <p class="note"><strong>Upload tribute:</strong> Use the "Upload photos/videos" button above</p>
-    </section>
-
-    <div class="grid grid-2" style="margin-top:16px;">
+    <div class="grid" style="margin-top:16px;">
       <section class="card" id="hotels">
         <h2>Nearby hotels (accommodation)</h2>
         <p class="note">Tap “Map” to search quickly.</p>
 
-        <div class="grid" style="margin-top:10px;">
+        <div class="hotelGrid" style="margin-top:10px;">
             <div class="hotel">
               <div class="name">SpringHill Suites Dallas Mansfield</div>
               <div class="meta">Map: <a href="https://www.google.com/maps/search/?api=1&query=SpringHill%20Suites%20Dallas%20Mansfield" target="_blank" rel="noopener noreferrer">Open</a></div>
@@ -510,24 +442,14 @@
 
   <!-- Sticky buttons -->
   <div class="stickyRSVP">
-    <a class="btn" href="#rsvp">✅ RSVP</a>
-    <a class="btn secondary" href="#upload">📤 Upload</a>
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeMp4qhL0IWMSnPXVPbm52kI2NyBwLJN0jzhvIsUUU0XywHXA/viewform" target="_blank" rel="noopener noreferrer">✅ RSVP/UPLOAD</a>
   </div>
 
   <div class="toast" id="toast"></div>
 
   <script>
-    // 3) REQUIRED: Add Google sheet endpoint (Apps Script Web App)
-    const UPLOAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKEFsURKDvYFniEWm1NLKR6fIOUqyB-AkmEmVs3WrkEUliFewC39YCvY7FWMQ8P4Yu/exec";
-
-    // 4) REQUIRED: Upload URL (Google Form)
+    // Upload URL (Google Form)
     const UPLOAD_URL = "https://forms.gle/9oTX3ABbtHQHZQ9s9";
-
-    // 4b) REQUIRED: RSVP fallback Google Form
-    const RSVP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeMp4qhL0IWMSnPXVPbm52kI2NyBwLJN0jzhvIsUUU0XywHXA/viewform";
-
-    // Backwards compatibility with your existing function names
-    const FORM_ENDPOINT = UPLOAD_ENDPOINT;
 
     // Event ISO (local)
     const EVENT_ISO = "2026-07-18T18:00:00"; // 6:00 PM
@@ -555,139 +477,8 @@
       setTimeout(() => toastEl.classList.remove("show"), 2600);
     }
 
-    // Local storage key (for testing / backup)
-    const STORAGE_KEY = "ayokunle50_rsvp_entries_v1";
-
-    const form = document.getElementById("rsvpForm");
-    const statusEl = document.getElementById("status");
-    const viewBtn = document.getElementById("viewResponsesBtn");
-    const submitBtn = document.getElementById("submitBtn");
     const yearEl = document.getElementById("year");
     if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-    function loadEntries(){
-      try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
-      catch(e){ return []; }
-    }
-    function saveEntries(entries){
-      const MAX = 200;
-      if(Array.isArray(entries) && entries.length > MAX){
-        entries = entries.slice(0, MAX);
-      }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
-    }
-    function setStatus(type, html){
-      statusEl.className = type ? type + " note" : "note";
-      statusEl.innerHTML = html;
-    }
-
-    async function postToEndpoint(payload){
-      if(!FORM_ENDPOINT) return {skipped:true};
-      
-      const maxRetries = 3;
-      const timeout = 15000; // 15 seconds
-      
-      for(let attempt = 1; attempt <= maxRetries; attempt++){
-        try {
-          console.log(`[Attempt ${attempt}/${maxRetries}] Posting to:`, FORM_ENDPOINT);
-          console.log("Payload:", JSON.stringify(payload));
-          
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), timeout);
-          
-          // Try without strict CORS mode to avoid preflight
-          const res = await fetch(FORM_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            signal: controller.signal
-          });
-          
-          clearTimeout(timeoutId);
-          console.log("Response status:", res.status, "ok:", res.ok);
-          
-          const text = await res.text();
-          console.log("Response body:", text);
-          
-          if(!res.ok) throw new Error("Endpoint error: " + res.status + " - " + text);
-          return {ok:true};
-        } catch(err) {
-          console.error(`[Attempt ${attempt}/${maxRetries}] Failed:`, err.message || err);
-          if(attempt === maxRetries) throw err;
-          // Wait before retry
-          await new Promise(r => setTimeout(r, 1000 * attempt));
-        }
-      }
-    }
-
-    if(form) form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const data = {
-        fullName: document.getElementById("fullName").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        attendance: document.getElementById("attendance").value,
-        guests: Number(document.getElementById("guests").value || 1),
-        diet: document.getElementById("diet").value.trim(),
-        message: document.getElementById("message").value.trim(),
-        submittedAt: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        page: window.location.href
-      };
-
-      if(!data.fullName || !data.attendance){
-        setStatus("danger", "Please add your name and select attendance.");
-        toast("Missing required fields.");
-        return;
-      }
-
-      // Save locally as backup
-      const entries = loadEntries();
-      entries.unshift(data);
-      saveEntries(entries);
-
-      // UX: button loading
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting...";
-
-      // Send to Google Sheets endpoint
-      try{
-        const result = await postToEndpoint(data);
-        if(result.skipped){
-          setStatus("warn", "Saved locally only. Set <code>UPLOAD_ENDPOINT</code> to send RSVPs to Google Sheets.");
-          toast("Saved locally (endpoint not set).");
-        } else {
-          setStatus("success", "Submitted! ✅ Thanks — your RSVP was received.");
-          toast("RSVP submitted ✅");
-        }
-        form.reset();
-        document.getElementById("guests").value = 1;
-      } catch (err){
-        console.error("RSVP submission error:", err);
-        setStatus("warn", "Saved locally ✅. Server unreachable — opening fallback form...");
-        toast("Saved locally. Opening backup form...");
-        // Fallback: open RSVP Google Form so user can submit manually
-        setTimeout(() => {
-          window.open(RSVP_FORM_URL, "_blank", "noopener,noreferrer");
-        }, 1000);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Submit RSVP";
-      }
-    });
-
-    if(viewBtn) viewBtn.addEventListener("click", () => {
-      const entries = loadEntries();
-      if(!entries.length){
-        alert("No submissions saved in this browser yet.");
-        return;
-      }
-      const lines = entries.slice(0, 20).map((x, i) =>
-        `${i+1}. ${x.fullName} — ${x.attendance} — Guests: ${x.guests}\n   Msg: ${x.message || "(none)"}\n   Time: ${x.submittedAt}`
-      );
-      alert("Your saved submissions (this browser):\n\n" + lines.join("\n\n"));
-    });
 
     // Countdown
     function tick(){
